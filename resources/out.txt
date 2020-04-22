@@ -1,0 +1,117 @@
+<Keyword, "int">
+<Identificator, "e25">
+<Space, " ">
+<Space, " ">
+<Delimiter, ";">
+<Delimiter, ";">
+<Comment, "/* kjik k kh kj
+ghuiy i     e
+
+
+  'a'"'k'""""\'\n'  */">
+<Space, " ">
+<Space, " ">
+<Operator, "*">
+<Comment, "//**/   /***/">
+<NewLine, "
+">
+<NewLine, "
+">
+<NewLine, "
+">
+<NewLine, "
+">
+<NewLine, "
+">
+<NewLine, "
+">
+<NewLine, "
+">
+<NewLine, "
+">
+<Space, " ">
+<Space, " ">
+<Comment, "/*
+
+
+    **/">
+<Operator, "*">
+<Operator, "*">
+<Operator, "/">
+<LiteralString, ""  /*ah'h'*/"">
+<LiteralChar, "'"'">
+<LiteralString, ""'"">
+<Space, " ">
+<LiteralChar, "'('">
+<Keyword, "void">
+<Space, " ">
+<Identificator, "main">
+<Separator, "(">
+<Separator, ")">
+<Separator, "{">
+<Separator, "}">
+<Separator, "{">
+<NewLine, "
+">
+<NewLine, "
+">
+<NewLine, "
+">
+<NewLine, "
+">
+<Keyword, "if">
+<Separator, "(">
+<Separator, "(">
+<Identificator, "a">
+<Operator, "++">
+<Operator, "+">
+<LiteralInt, "12e3">
+<Operator, "==">
+<Identificator, "e12">
+<Operator, ".">
+<Identificator, "e">
+<Operator, "+">
+<LiteralInt, "12">
+<Separator, ")">
+<Operator, "*">
+<Operator, "/">
+<Identificator, "e20">
+<Operator, "++">
+<Operator, "+=">
+<Operator, "++">
+<LiteralFloat, "20e-3">
+<Operator, "<">
+<Operator, "<=">
+<LiteralInt, "1">
+<Separator, ")">
+<Space, " ">
+<Space, " ">
+<Identificator, "a">
+<Operator, "*">
+<Operator, "*">
+<Identificator, "p">
+<Operator, "*">
+<Comment, "/*/*/">
+<Operator, "/">
+<Operator, "++">
+<Identificator, "e">
+<Operator, "+">
+<LiteralInt, "3">
+<Delimiter, ";">
+<NewLine, "
+">
+<NewLine, "
+">
+<Keyword, "return">
+<Space, " ">
+<LiteralInt, "0">
+<Delimiter, ";">
+<LiteralString, ""jkhkjk      \""">
+<Identificator, "lkjlkjlkjkl">
+<NewLine, "
+">
+<NewLine, "
+">
+<ErrorState, "
+Err : <StringLoop : "}
+ÿ">

@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-C:/D/Analizator-Lexical/Scanner.cpp
-Scanner.h
-C:/D/Analizator-Lexical/Scanner.h
-
 C:/D/Analizator-Lexical/Scanner.h
 cstdio
 -
@@ -22,5 +18,15 @@ cctype
 iostream
 -
 ostream
+-
+
+C:/D/Analizator-Lexical/main.cpp
+direct.h
+-
+unistd.h
+-
+Scanner.h
+C:/D/Analizator-Lexical/Scanner.h
+fstream
 -
 

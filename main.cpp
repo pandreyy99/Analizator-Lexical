@@ -3,10 +3,12 @@
 #define GetCurrentDir _getcwd
 #else
 #include <unistd.h>
+
 #define GetCurrentDir getcwd
 #endif
 
 #include "Scanner.h"
+#include <fstream>
 
 using namespace std;
 
@@ -21,6 +23,9 @@ int main() {
     // cout << get_current_dir() << endl;
 
     char *filename = "../resources/in.txt";
+    char *filename_out = "../resources/out.txt";
+    ofstream out;
+    out.open(filename_out, ios::out);
 
     Scanner *scanner = new Scanner(filename);
     Scanner::Token token;
@@ -28,7 +33,8 @@ int main() {
     do {
         token = scanner->getToken();
         if (token.getType() != -1) {
-            cout << token;
+            // daca automatul s-a blocat, afisam tokenul
+            out << token;
         }
     } while (token.getType() != errorState);
 
