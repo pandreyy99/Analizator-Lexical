@@ -19,7 +19,7 @@ char nameOfStates[][27] = {
         "ExponentialInteger",
         "ExponentialFloat",
         "FloatNumberLoop",
-        "FloatPoin",
+        "FloatPoint",
 
         "ZeroNumber",
         "BinaryIdentificator",
@@ -87,7 +87,7 @@ bool Scanner::Token::operator!=(const Token &rhs) const {
 
 std::ostream &operator<<(std::ostream &os, const Scanner::Token &token) {
     if (token.type != -1) {
-        os << "<type: " << nameOfStates[token.type] << ", content: " << token.content << ">\n";
+        os << "<" << nameOfStates[token.type] << ", \"" << token.content << "\">\n";
     } else {
         os << "<type: No type yet, content: " << token.content << ">\n";
     }
@@ -111,8 +111,7 @@ Scanner::Scanner(char *filename) : filename(filename) {
     currentContent = "";
 
     if (in == NULL)
-        //perror ("Error opening file");
-        std::cout << "Nu exista!";
+        perror("Error opening file");
 }
 
 bool Scanner::isKeyword(string str) {
@@ -182,15 +181,13 @@ int Scanner::lambdaTranz(int currentState) {
 
 Scanner::Token Scanner::getToken() {
     Token token = Token();
+    lposs++;
     char currentSymbol;
 
     while (currentSymbol = fgetc(this->in)) {
         currentState = searchState(previousState, currentSymbol);
         currentContent = currentContent + currentSymbol;
 
-        /**printf("%s - %s -| %s ^ %c\n",
-               nameOfStates[previousState], nameOfStates[currentState],
-               currentContent.c_str(), currentSymbol );*/
         token.setContent(previousContent);
 
         switch (currentState) {
@@ -198,16 +195,15 @@ Scanner::Token Scanner::getToken() {
 
 
                 if (isFinal(previousState)) {
-                    // ltokAdd(&lt, prevState, word);
-
                     if (!isKeyword(previousContent)) {
                         token.setType(previousState);
                     } else {
                         token.setType(ARRAY_SIZE(nameOfStates) - 1); // index for keywords
                     }
 
-                    currentContent = currentSymbol;
-                    previousContent = currentSymbol;
+                    previousContent = currentContent = "";
+                    fseek(in, lposs, SEEK_SET);
+                    lposs--;
                     previousState = initState;
 
                     return token;
@@ -216,7 +212,6 @@ Scanner::Token Scanner::getToken() {
                 int lambdaState = lambdaTranz(previousState);
 
                 if (isFinal(lambdaState)) {
-                    // ltokAdd(&lt, lmbState, word);
                     if (!isKeyword(previousContent)) {
                         token.setType(lambdaState);
                     } else {
@@ -239,7 +234,6 @@ Scanner::Token Scanner::getToken() {
                 token.setType(errorState);
 
                 return token;
-                // ltokAdd(&lt, errorState, errMsg);
                 // goto end;
             }
 
@@ -254,8 +248,6 @@ Scanner::Token Scanner::getToken() {
                 token.setContent(errorMsg);
                 return token;
 
-                //ltokAdd(&lt, errorState, errMsg);
-                //free(errMsg);
                 // goto end;
             }
 
@@ -274,6 +266,13 @@ Scanner::Token Scanner::getToken() {
 
 Scanner::~Scanner() {
     fclose(this->in);
+    free(filename);
+    free(lambdaTrans);
+    free(simpleTrans);
+    free(multipleTrans);
+    previousContent = currentContent = "";
+    previousState = currentState = NULL;
+
 }
 
 
