@@ -217,8 +217,9 @@ Scanner::Token Scanner::getToken() {
                     } else {
                         token.setType(ARRAY_SIZE(nameOfStates) - 1);
                     }
-                    currentContent = currentSymbol;
-                    previousContent = currentSymbol;
+                    previousContent = currentContent = "";
+                    fseek(in, lposs, SEEK_SET);
+                    lposs--;
                     previousState = initState;
 
                     return token;
@@ -226,7 +227,7 @@ Scanner::Token Scanner::getToken() {
                 }
 
                 string errorMsg = "\nErr : <";
-                errorMsg.append(nameOfStates[currentState]);
+                errorMsg.append(nameOfStates[previousState]);
                 errorMsg.append(" : ");
                 errorMsg.append(currentContent);
 
@@ -271,7 +272,7 @@ Scanner::~Scanner() {
     free(simpleTrans);
     free(multipleTrans);
     previousContent = currentContent = "";
-    previousState = currentState = NULL;
+    previousState = currentState = 0;
 
 }
 
